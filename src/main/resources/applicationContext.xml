@@ -30,6 +30,14 @@
         <property name="redisManager" ref="redisManager" />
         <property name="keyPrefix" value="shiro:cache:" />
     </bean>
+
+    <!-- securityManager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="exampleRealm"/>
+        <property name="rememberMeManager.cipherKey" value="kPH+bIxk5D2deZiIxcaaaA==" />
+        <property name="sessionManager" ref="sessionManager" />
+        <property name="cacheManager" ref="cacheManager" />
+    </bean>
     <!-- shiro-redis configuration [end] -->
 
     <!-- The following configuration is only for tutorial -->
@@ -38,13 +46,6 @@
     </bean>
 
     <bean id="exampleRealm" class="org.crazycake.shiroredis.ExampleRealm" />
-
-    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="exampleRealm"/>
-        <property name="rememberMeManager.cipherKey" value="kPH+bIxk5D2deZiIxcaaaA==" />
-        <property name="sessionManager" ref="sessionManager" />
-        <property name="cacheManager" ref="cacheManager" />
-    </bean>
 
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
