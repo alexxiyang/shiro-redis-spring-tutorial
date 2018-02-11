@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+    <!-- shiro-redis configuration [start] -->
+    <!-- shiro redisManager -->
+    <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
+        <property name="host" value="127.0.0.1"/>
+        <property name="port" value="6379"/>
+        <property name="expire" value="1800"/>
+        <!-- optional properties:
+        <property name="timeout" value="10000"/>
+        <property name="password" value="123456"/>
+        <property name="database" value="1"/>
+        -->
+    </bean>
+
+    <!-- Redis-based session configuration -->
+    <bean id="redisSessionDAO" class="org.crazycake.shiro.RedisSessionDAO">
+        <property name="redisManager" ref="redisManager" />
+        <property name="keyPrefix" value="shiro:session:" />
+    </bean>
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="redisSessionDAO" />
+    </bean>
+
+    <!-- Redis-based cache configuration -->
+    <bean id="cacheManager" class="org.crazycake.shiro.RedisCacheManager">
+        <property name="redisManager" ref="redisManager" />
+        <property name="keyPrefix" value="shiro:cache:" />
+    </bean>
+    <!-- shiro-redis configuration [end] -->
+
+    <!-- The following configuration is only for tutorial -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <bean id="exampleRealm" class="org.crazycake.shiroredis.ExampleRealm" />
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="exampleRealm"/>
+        <property name="rememberMeManager.cipherKey" value="kPH+bIxk5D2deZiIxcaaaA==" />
+        <property name="sessionManager" ref="sessionManager" />
+        <property name="cacheManager" ref="cacheManager" />
+    </bean>
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+</beans>
