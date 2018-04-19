@@ -19,19 +19,23 @@
     <!-- Redis-based session configuration -->
     <bean id="redisSessionDAO" class="org.crazycake.shiro.RedisSessionDAO">
         <property name="redisManager" ref="redisManager" />
+        <!--
         <property name="expire" value="1800"/>
         <property name="keyPrefix" value="shiro:mysession:" />
-    </bean>
+        -->
+</bean>
 
-    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-        <property name="sessionDAO" ref="redisSessionDAO" />
-    </bean>
+<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+    <property name="sessionDAO" ref="redisSessionDAO" />
+</bean>
 
-    <!-- Redis-based cache configuration -->
+<!-- Redis-based cache configuration -->
     <bean id="cacheManager" class="org.crazycake.shiro.RedisCacheManager">
         <property name="redisManager" ref="redisManager" />
+        <!--
         <property name="expire" value="1800"/>
         <property name="keyPrefix" value="shiro:mycache:" />
+        -->
     </bean>
 
     <!-- securityManager -->

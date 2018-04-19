@@ -37,9 +37,8 @@ public class ExampleRealm extends AuthorizingRealm {
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUsername(usernamePasswordToken.getUsername());
 		userInfo.setAge(23);
-		userInfo.setCity("Paris");
 		// Expect password is "123456"
-		return new SimpleAuthenticationInfo(userInfo, "123456", usernamePasswordToken.getUsername());
+		return new SimpleAuthenticationInfo(userInfo, "123456", getName());
 	}
 	
 	@PostConstruct

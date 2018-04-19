@@ -12,7 +12,6 @@ git clone https://github.com/alexxiyang/shiro-redis-spring-tutorial.git
 ```XML
 <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
         <property name="host" value="192.168.56.101:6379"/>
-        <property name="expire" value="1800"/>
         <!-- optional properties:
         <property name="timeout" value="10000"/>
         <property name="password" value="123456"/>
