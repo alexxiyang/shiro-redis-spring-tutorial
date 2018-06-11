@@ -1,10 +1,8 @@
 package org.crazycake.shiroredis;
 
-import org.crazycake.shiro.AuthCachePrincipal;
-
 import java.io.Serializable;
 
-public class UserInfo implements Serializable, AuthCachePrincipal {
+public class UserInfo implements Serializable {
 
     private String username;
 
@@ -26,10 +24,5 @@ public class UserInfo implements Serializable, AuthCachePrincipal {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    @Override
-    public String getAuthCacheKey() {
-        return username;
     }
 }

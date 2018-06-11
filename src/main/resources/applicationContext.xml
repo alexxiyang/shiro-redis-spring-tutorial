@@ -20,7 +20,7 @@
     <bean id="redisSessionDAO" class="org.crazycake.shiro.RedisSessionDAO">
         <property name="redisManager" ref="redisManager" />
         <!--
-        <property name="expire" value="1800"/>
+        <property name="expire" value="-2"/>
         <property name="keyPrefix" value="shiro:mysession:" />
         -->
 </bean>
@@ -32,6 +32,7 @@
 <!-- Redis-based cache configuration -->
     <bean id="cacheManager" class="org.crazycake.shiro.RedisCacheManager">
         <property name="redisManager" ref="redisManager" />
+        <property name="principalIdFieldName" value="username" />
         <!--
         <property name="expire" value="1800"/>
         <property name="keyPrefix" value="shiro:mycache:" />
