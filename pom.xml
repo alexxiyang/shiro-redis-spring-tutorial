@@ -13,6 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jettyVersion>7.2.0.v20101020</jettyVersion>
+        <springVersion>4.3.18</springVersion>
     </properties>
 
     <build>
@@ -66,13 +67,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.3.10.RELEASE</version>
+            <version>${springVersion}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.3.10.RELEASE</version>
+            <version>${springVersion}</version>
         </dependency>
 
         <!-- the following dependencies only for tutorial -->
