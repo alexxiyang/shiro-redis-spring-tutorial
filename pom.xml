@@ -12,8 +12,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jettyVersion>7.2.0.v20101020</jettyVersion>
-        <springVersion>4.3.18</springVersion>
+        <jettyVersion>9.3.24.v20180605</jettyVersion>
+        <springVersion>4.3.18.RELEASE</springVersion>
     </properties>
 
     <build>
@@ -23,15 +23,15 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.0.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
 
             <plugin>
                 <!-- This plugin is needed for the servlet example -->
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jettyVersion}</version>
             </plugin>

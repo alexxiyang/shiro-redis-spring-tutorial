@@ -4,57 +4,43 @@
 <beans>
 
     <!-- shiro-redis configuration [start] -->
-    <!-- shiro redisManager -->
-    <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
-        <property name="host" value="192.168.56.101:6379"/>
-        <!-- optional properties:
-        <property name="timeout" value="10000"/>
-        <property name="password" value="123456"/>
-        <property name="database" value="1"/>
-        <property name="jedisPoolConfig" ref="jedisPoolConfig"/>
-        <property name="count" value="100"/>
-        -->
-    </bean>
 
-    <!-- Redis-based session configuration -->
+    <!-- Redis manager [start] -->
+    <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
+        <property name="host" value="127.0.0.1:6379"/>
+    </bean>
+    <!-- Redis manager [end] -->
+
+    <!-- Redis sessionDAO [start] -->
     <bean id="redisSessionDAO" class="org.crazycake.shiro.RedisSessionDAO">
         <property name="redisManager" ref="redisManager" />
-        <!--
-        <property name="expire" value="-2"/>
-        <property name="keyPrefix" value="shiro:mysession:" />
-        -->
-</bean>
+    </bean>
+    <!-- Redis sessionDAO [end] -->
 
-<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-    <property name="sessionDAO" ref="redisSessionDAO" />
-</bean>
-
-<!-- Redis-based cache configuration -->
+    <!-- Redis cacheManager [start] -->
     <bean id="cacheManager" class="org.crazycake.shiro.RedisCacheManager">
         <property name="redisManager" ref="redisManager" />
-        <property name="principalIdFieldName" value="username" />
-        <!--
-        <property name="expire" value="1800"/>
-        <property name="keyPrefix" value="shiro:mycache:" />
-        -->
+    </bean>
+    <!-- Redis cacheManager [end] -->
+
+    <!-- shiro-redis configuration [end] -->
+
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="redisSessionDAO" />
     </bean>
 
-    <!-- securityManager -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="exampleRealm"/>
         <property name="rememberMeManager.cipherKey" value="kPH+bIxk5D2deZiIxcaaaA==" />
         <property name="sessionManager" ref="sessionManager" />
         <property name="cacheManager" ref="cacheManager" />
     </bean>
-    <!-- shiro-redis configuration [end] -->
 
     <!-- The following configuration is only for tutorial -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
     </bean>
-
     <bean id="exampleRealm" class="org.crazycake.shiroredis.ExampleRealm" />
-
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
 </beans>

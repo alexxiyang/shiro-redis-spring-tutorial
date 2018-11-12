@@ -12,13 +12,6 @@ git clone https://github.com/alexxiyang/shiro-redis-spring-tutorial.git
 ```XML
 <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
         <property name="host" value="192.168.56.101:6379"/>
-        <!-- optional properties:
-        <property name="timeout" value="10000"/>
-        <property name="password" value="123456"/>
-        <property name="database" value="1"/>
-        <property name="jedisPoolConfig" ref="jedisPoolConfig"/>
-        <property name="count" value="100"/>
-        -->
 </bean>
 ```
 

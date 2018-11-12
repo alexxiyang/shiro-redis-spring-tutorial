@@ -10,6 +10,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * This realm is only for tutorial
@@ -35,6 +36,7 @@ public class ExampleRealm extends AuthorizingRealm {
 		UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken)token;
 
 		UserInfo userInfo = new UserInfo();
+		userInfo.setId(ThreadLocalRandom.current().nextInt(1, 100));
 		userInfo.setUsername(usernamePasswordToken.getUsername());
 		userInfo.setAge(23);
 		// Expect password is "123456"
