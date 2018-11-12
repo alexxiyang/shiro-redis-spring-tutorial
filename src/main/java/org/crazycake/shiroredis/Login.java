@@ -35,16 +35,7 @@ public class Login extends HttpServlet {
         
         String username = request.getParameter("username");
         if (!currentUser.isAuthenticated()) {
-            UsernamePasswordToken token = new UsernamePasswordToken(username, request.getParameter("password"));
-            try {
-                currentUser.login(token);
-            } catch (UnknownAccountException uae) {
-                log.info("There is no user with username of " + token.getPrincipal());
-                throw uae;
-            } catch (IncorrectCredentialsException ice) {
-                log.info("Password for account " + token.getPrincipal() + " was incorrect!");
-                throw ice;
-            }
+            currentUser.login(new UsernamePasswordToken(username, request.getParameter("password")));
         }
 
         checkAuthorization(currentUser);
