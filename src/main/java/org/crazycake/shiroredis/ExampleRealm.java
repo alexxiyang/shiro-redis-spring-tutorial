@@ -37,7 +37,6 @@ public class ExampleRealm extends AuthorizingRealm {
 		UserInfo userInfo = new UserInfo();
 		userInfo.setId(ThreadLocalRandom.current().nextInt(1, 100));
 		userInfo.setUsername(usernamePasswordToken.getUsername());
-		userInfo.setAge(23);
 		// Expect password is "123456"
 		return new SimpleAuthenticationInfo(userInfo, "123456", getName());
 	}
