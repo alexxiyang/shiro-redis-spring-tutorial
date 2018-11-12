@@ -23,7 +23,7 @@ public class ExampleRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
-		// only for tutorial
+		// set authorization for tutorial
 		List<String> roles = new ArrayList<String>();
 		roles.add("schwartz");
 		authInfo.addRoles(roles);
@@ -34,7 +34,6 @@ public class ExampleRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
 		UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken)token;
-
 		UserInfo userInfo = new UserInfo();
 		userInfo.setId(ThreadLocalRandom.current().nextInt(1, 100));
 		userInfo.setUsername(usernamePasswordToken.getUsername());
