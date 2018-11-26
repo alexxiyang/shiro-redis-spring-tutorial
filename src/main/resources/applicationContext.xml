@@ -51,7 +51,7 @@
         <property name="filterChainDefinitions">
             <value>
                 # some example chain definitions:
-                /** = anon
+                # /** = anon
                 # more URL-to-FilterChain definitions here
             </value>
         </property>
