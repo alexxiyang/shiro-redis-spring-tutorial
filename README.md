@@ -11,7 +11,7 @@ git clone https://github.com/alexxiyang/shiro-redis-spring-tutorial.git
 
 ```XML
 <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
-        <property name="host" value="192.168.56.101:6379"/>
+        <property name="host" value="127.0.0.1:6379"/>
 </bean>
 ```
 

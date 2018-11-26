@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.crazycake</groupId>
             <artifactId>shiro-redis</artifactId>
-            <version>3.1.0</version>
+            <version>3.2.1</version>
         </dependency>
 
         <!-- spring dependencies -->
@@ -75,6 +75,14 @@
             <artifactId>spring-web</artifactId>
             <version>${springVersion}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springVersion}</version>
+        </dependency>
+
 
         <!-- the following dependencies only for tutorial -->
         <dependency>

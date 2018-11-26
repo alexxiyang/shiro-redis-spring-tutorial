@@ -1,10 +1,11 @@
-package org.crazycake.shiroredis;
+package org.crazycake.shiroredis.model;
 
 import java.io.Serializable;
 
 public class UserInfo implements Serializable {
 
     private Integer id;
+
     private String username;
 
     public Integer getId() {

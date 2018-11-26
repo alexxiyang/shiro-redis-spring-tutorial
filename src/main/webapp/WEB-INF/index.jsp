@@ -1,6 +1,6 @@
 <body>
 <h1>shiro-redis tutorial</h1>
-<form action="/login">
+<form action="/login" method="post">
     <div>
         <span>Username:</span><input name="username" />
     </div>
@@ -12,7 +12,6 @@
     </div>
     <div>
         <p>Please use the following information to login:
-        <p>username: admin
         <p>password: 123456
     </div>
 </form>

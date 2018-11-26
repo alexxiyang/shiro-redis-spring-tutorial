@@ -1,4 +1,4 @@
-package org.crazycake.shiroredis;
+package org.crazycake.shiroredis.realm;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
@@ -6,6 +6,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.crazycake.shiroredis.model.UserInfo;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Alex Yang
  *
  */
+@Repository
 public class ExampleRealm extends AuthorizingRealm {
 
 	@Override
