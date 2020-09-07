@@ -1,7 +1,6 @@
 package org.crazycake.shiroredis.realm;
 
 import org.apache.shiro.authc.*;
-import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -9,7 +8,6 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.crazycake.shiroredis.model.UserInfo;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -27,7 +25,7 @@ public class ExampleRealm extends AuthorizingRealm {
 			PrincipalCollection principals) {
 		SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
 		// set authorization for tutorial
-		List<String> roles = new ArrayList<String>();
+		List<String> roles = new ArrayList<>();
 		roles.add("schwartz");
 		authInfo.addRoles(roles);
 		return authInfo;
@@ -43,10 +41,4 @@ public class ExampleRealm extends AuthorizingRealm {
 		// Expect password is "123456"
 		return new SimpleAuthenticationInfo(userInfo, "123456", getName());
 	}
-	
-	@PostConstruct
-	public void initCredentialsMatcher() {
-		setCredentialsMatcher(new SimpleCredentialsMatcher());
-	}
-
 }
