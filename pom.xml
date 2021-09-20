@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <shiroVersion>1.6.0</shiroVersion>
+        <shiroVersion>1.8.0</shiroVersion>
         <springVersion>5.2.8.RELEASE</springVersion>
     </properties>
 
